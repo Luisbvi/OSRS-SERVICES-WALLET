@@ -1,7 +1,6 @@
 const { Client, Collection } = require('discord.js');
-const dotenv = require('dotenv');
-dotenv.config();
-const client = new Client({ intents: 32767})
+const { TOKEN } = require('../config.json')
+const client = new Client({ intents: 32767 })
 const { promisify } = require("util");
 const { glob } = require("glob");
 const PG = promisify(glob);
@@ -13,4 +12,4 @@ client.commands = new Collection();
     require(`./Handlers/${handler}`)(client, PG, Ascii);
 });
 
-client.login(process.env.TOKEN);
+client.login(TOKEN);

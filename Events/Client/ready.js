@@ -1,5 +1,6 @@
 const { Client } = require('discord.js');
 const mongoose = require("mongoose");
+const {} = require('../../config.json')
 
 module.exports = {
     name: "ready",
@@ -15,7 +16,7 @@ module.exports = {
         client.user.setPresence({activities: [{name: "Services ", type: "WATCHING"}], status: "dnd"});
 
         if(!process.env.DATABASE) return
-        mongoose.connect(process.env.DATABASE, {
+        mongoose.connect(DATABASE, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(()=>{
